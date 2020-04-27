@@ -148,7 +148,7 @@ subquestion: |
   Click "${word("Add another")}" to add more.
 list collect: True
 fields:
-  - Are they a person, or a business?: other_parties[i].person_type
+  - Are they a person or a business?: other_parties[i].person_type
     input type: radio
     choices:
       - Business or organization: business
@@ -210,7 +210,7 @@ id: your contact information
 question: |
   What is your contact information?
 subquestion: |
-  Put in the address the court should use to mail papers to you.
+  What address can the court mail papers to you?
 fields:
   - Street address: users[0].address.address
     address autocomplete: True
@@ -231,8 +231,8 @@ fields:
     input type: area
     required: False
     help: |
-      If you do not have a phone number 
-      or email the court can use, provide specific contact instructions. For example, use a friend's phone number. But the friend must be someone you can trust to tell you the court is trying to reach you.
+      If you do not provide a phone number 
+      or email address, how should the court contact you? For example, you can provide a the phone number or email address of someone you trust to tell you when the court is trying to reach you.
 validation code: |
   if (not showifdef('users[0].phone_number') and (not showifdef('users[0].email')) and (not showifdef('users[0].other_contact_method'))):
     validation_error(word("You need to provide at least one contact method."))
